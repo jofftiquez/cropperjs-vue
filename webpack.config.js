@@ -5,18 +5,18 @@ function createConfig(target) {
   var name = 'index.js';
 
   if(target !== 'commonjs2') {
-    name = 'v-animate-css.js'
+    name = 'cropperjs-vue.js'
   }
 
   var output = {
-    library: 'VAnimateCss',
+    library: 'CropperJsVue',
     libraryTarget: target,
     path: path.resolve(__dirname, 'dist'),
     filename: name
   }
 
   if(typeof target === 'undefined') {
-    name = 'vue-breathing-colors.js';
+    name = 'cropperjs-vue.js';
     output = {
       path: path.resolve(__dirname, 'dist'),
       filename: name

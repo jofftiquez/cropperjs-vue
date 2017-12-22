@@ -1,3 +1,3 @@
-import VAnimateCss from './dist';
+import CropperJsVue from './dist';
 
-export default VAnimateCss;
+export default CropperJsVue;

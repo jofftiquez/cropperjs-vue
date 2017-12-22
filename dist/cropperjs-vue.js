@@ -1,4 +1,4 @@
-module.exports =
+var CropperJsVue =
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};

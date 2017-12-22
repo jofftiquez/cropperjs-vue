@@ -917,6 +917,10 @@ create-hmac@^1.1.0, create-hmac@^1.1.2, create-hmac@^1.1.4:
     safe-buffer "^5.0.1"
     sha.js "^2.4.8"
 
+cropperjs@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/cropperjs/-/cropperjs-1.2.1.tgz#c80c743d15cdddcb8c9c7756542312654da475e4"
+
 cross-spawn@^5.0.1:
   version "5.1.0"
   resolved "https://registry.yarnpkg.com/cross-spawn/-/cross-spawn-5.1.0.tgz#e8bd0efee58fcff6f8f94510a0a554bbfa235449"
