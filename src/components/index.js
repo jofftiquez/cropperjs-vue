@@ -3,12 +3,13 @@
 export default (Vue, Cropper) => {
   Vue.component('cropperjs-vue', {
     template: `
-      <div>
-        <img id="image" :src="img"/>
-      </div>
+      <img id="image" :height="height" :src="img"/>
     `,
     props: {
-      img: '',
+      height: {
+        type: Number,
+        default: 450
+      },
       viewMode: {
         type: Number,
         default: 1
@@ -20,17 +21,18 @@ export default (Vue, Cropper) => {
     },
     data() {
       return {
-        test: 'Hello World',
         cropper: null,
-        result: null
+        result: null,
+        img: ''
       }
     },
-    mounted() {
-      this._initCropper();
-    },
     methods: {
+      bind(img) {
+        this._initCropper(img);
+      },
       crop(e) {
         this.$emit('crop', this.cropper.getCroppedCanvas().toDataURL('image/jpeg'));
+        this.cropper.destroy();
       },
       rotate(degree) {
         this.cropper.rotate(degree);
@@ -44,9 +46,9 @@ export default (Vue, Cropper) => {
       destroy() {
         this.cropper.destroy();
       },
-      _initCropper() {
+      _initCropper(img) {
         const image = document.getElementById('image');
-        console.log(image)
+        image.src = img;
         this.cropper = new Cropper(image, {
           viewMode: this.viewMode,
           aspectRatio: this.aspectRatio

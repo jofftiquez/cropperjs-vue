@@ -107,9 +107,12 @@ Object.defineProperty(exports, "__esModule", {
 
 exports.default = function (Vue, Cropper) {
   Vue.component('cropperjs-vue', {
-    template: '\n      <div>\n        <img id="image" :src="img"/>\n      </div>\n    ',
+    template: '\n      <img id="image" :height="height" :src="img"/>\n    ',
     props: {
-      img: '',
+      height: {
+        type: Number,
+        default: 450
+      },
       viewMode: {
         type: Number,
         default: 1
@@ -121,18 +124,19 @@ exports.default = function (Vue, Cropper) {
     },
     data: function data() {
       return {
-        test: 'Hello World',
         cropper: null,
-        result: null
+        result: null,
+        img: ''
       };
-    },
-    mounted: function mounted() {
-      this._initCropper();
     },
 
     methods: {
+      bind: function bind(img) {
+        this._initCropper(img);
+      },
       crop: function crop(e) {
         this.$emit('crop', this.cropper.getCroppedCanvas().toDataURL('image/jpeg'));
+        this.cropper.destroy();
       },
       rotate: function rotate(degree) {
         this.cropper.rotate(degree);
@@ -146,9 +150,9 @@ exports.default = function (Vue, Cropper) {
       destroy: function destroy() {
         this.cropper.destroy();
       },
-      _initCropper: function _initCropper() {
+      _initCropper: function _initCropper(img) {
         var image = document.getElementById('image');
-        console.log(image);
+        image.src = img;
         this.cropper = new Cropper(image, {
           viewMode: this.viewMode,
           aspectRatio: this.aspectRatio
