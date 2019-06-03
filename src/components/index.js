@@ -3,13 +3,14 @@
 export default (Vue, Cropper) => {
   Vue.component('cropperjs-vue', {
     template: `
-      <img id="image" :height="height" :src="img"/>
+      <img id="image" :height="height" :src="img" :style="{'max-height': maxHeight}"/>
     `,
     props: {
       height: {
         type: Number,
         default: 450
       },
+      maxHeight: Number,
       viewMode: {
         type: Number,
         default: 1

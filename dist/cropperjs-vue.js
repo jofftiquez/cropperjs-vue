@@ -83,7 +83,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var link = document.createElement('link');
 link.rel = 'stylesheet';
-link.href = 'https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.2.1/cropper.min.css';
+link.href = 'https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.3.5/cropper.min.css';
 document.getElementsByTagName('head')[0].appendChild(link);
 
 var CropperJsVue = {
@@ -107,12 +107,13 @@ Object.defineProperty(exports, "__esModule", {
 
 exports.default = function (Vue, Cropper) {
   Vue.component('cropperjs-vue', {
-    template: '\n      <img id="image" :height="height" :src="img"/>\n    ',
+    template: '\n      <img id="image" :height="height" :src="img" :style="{\'max-height\': maxHeight}"/>\n    ',
     props: {
       height: {
         type: Number,
         default: 450
       },
+      maxHeight: Number,
       viewMode: {
         type: Number,
         default: 1
